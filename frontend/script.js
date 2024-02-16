@@ -8,7 +8,18 @@ const fetchData = async () => {
 
       const content = await response.text()
 
-      responseContainer.innerHTML += content
+      responseContainer.innerHTML =
+         '<a id="urlText" href="' +
+         response.url +
+         '">' +
+         response.url +
+         '</a>' +
+         ' responded with:'
+
+      const responseText = document.createElement('p')
+      responseText.id = 'responseText'
+      responseText.textContent = content
+      responseContainer.appendChild(responseText)
    } catch (error) {
       console.error(error)
    }
