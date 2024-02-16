@@ -6,12 +6,20 @@ Description: Generates elements on your website to represent folders on the serv
 Author: Alexander Marini
 */
 
-header('Access-Control-Allow-Origin: *'); // remove for dist (add for dev)
+// Uncomment line below for testing in a different environment.
+// header('Access-Control-Allow-Origin: *');
 
-function foldersToElements()
+function foldersToElements($atts)
 {
-   // The base folder to run this plugin on !! relative to to this file !!
-   $baseFolder = 'app-och-webb';
+   $atts = shortcode_atts(
+      array(
+         'baseFolder' => ''
+      ),
+      $atts,
+      'foldersToElements'
+   );
+
+   $baseFolder = "../../../" . $atts['baseFolder'];
    $folders = array_filter(glob($baseFolder . '/*', GLOB_ONLYDIR), 'is_dir');
 
    $elements = "<div class='wp-block-columns alignwide'>";
@@ -46,9 +54,7 @@ function foldersToElements()
 
    $elements .= "</div>";
 
-   echo $elements; // Return funkar också för WordPress?
+   return $elements;
 }
 
-foldersToElements();
-
-//add_shortcode('foldersToElements', 'foldersToElements');
+add_shortcode('foldersToElements', 'foldersToElements');
