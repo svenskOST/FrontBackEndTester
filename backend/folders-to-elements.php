@@ -9,17 +9,11 @@ Author: Alexander Marini
 // Uncomment line below for testing in a different environment.
 // header('Access-Control-Allow-Origin: *');
 
-function foldersToElements($atts)
+function foldersToElements()
 {
-   $atts = shortcode_atts(
-      array(
-         'baseFolder' => ''
-      ),
-      $atts,
-      'foldersToElements'
-   );
+   $pluginDir = plugin_dir_path(__FILE__);
 
-   $baseFolder = "../../../" . $atts['baseFolder'];
+   $baseFolder = $pluginDir . "../../../app-och-webb";
    $folders = array_filter(glob($baseFolder . '/*', GLOB_ONLYDIR), 'is_dir');
 
    $elements = "<div class='wp-block-columns alignwide'>";
