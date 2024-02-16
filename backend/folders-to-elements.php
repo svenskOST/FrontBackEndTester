@@ -10,7 +10,7 @@ header('Access-Control-Allow-Origin: *'); // remove for dist (add for dev)
 
 function folders_to_elements()
 {
-   // The base folder to run this plugin on
+   // The base folder to run this plugin on !! relative to to this file !!
    $baseFolder = 'app-och-webb';
    $folders = array_filter(glob($baseFolder . '/*', GLOB_ONLYDIR), 'is_dir');
 
