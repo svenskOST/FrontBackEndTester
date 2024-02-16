@@ -8,7 +8,7 @@ Author: Alexander Marini
 
 header('Access-Control-Allow-Origin: *'); // remove for dist (add for dev)
 
-function folders_to_elements()
+function foldersToElements()
 {
    // The base folder to run this plugin on !! relative to to this file !!
    $baseFolder = 'app-och-webb';
@@ -49,6 +49,6 @@ function folders_to_elements()
    echo $elements; // Return funkar också för WordPress?
 }
 
-folders_to_elements();
+foldersToElements();
 
-//add_shortcode('folders_to_elements', 'folders_to_elements');
+//add_shortcode('foldersToElements', 'foldersToElements');
