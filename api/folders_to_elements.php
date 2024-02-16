@@ -6,6 +6,8 @@ Description: Generates elements on your website to represent folders on the serv
 Author: Alexander Marini
 */
 
+header('Access-Control-Allow-Origin: *'); // not for dist
+
 function folders_to_elements()
 {
    try {
@@ -51,4 +53,6 @@ function folders_to_elements()
    }
 }
 
-add_shortcode('folders_to_elements', 'folders_to_elements');
+folders_to_elements();
+
+//add_shortcode('folders_to_elements', 'folders_to_elements');
