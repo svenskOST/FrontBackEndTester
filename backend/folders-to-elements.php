@@ -13,18 +13,24 @@ function foldersToElements()
 {
    $pluginDir = plugin_dir_path(__FILE__);
 
-   $baseFolder = $pluginDir . "../../../app-och-webb";
-   $folders = array_filter(glob($baseFolder . '/*', GLOB_ONLYDIR), 'is_dir');
+   // Base to find folders relative to this plugin.
+   $scriptRelativeBase = $pluginDir . "../../../app-och-webb";
+   $folders = array_filter(glob($scriptRelativeBase . '/*', GLOB_ONLYDIR), 'is_dir');
+
+   // Base for URLs relative to the page document
+   $pageRelativeBase = "../app-och-webb";
 
    $elements = "<div class='wp-block-columns alignwide'>";
 
    foreach ($folders as $folder) {
+      $folderName = basename($folder);
+      $link = $pageRelativeBase . '/' . $folderName;
       $icon = null;
 
       if (file_exists($folder . '/icon.png')) {
-         $icon = $folder . '/icon.png';
+         $icon = $pageRelativeBase . '/' . $folderName . '/icon.png';
       } else {
-         $icon = $baseFolder . '/standardIcon.png';
+         $icon = $pageRelativeBase . '/standard-icon.png';
       }
 
       $data = json_decode(file_get_contents($folder . '/settings.json'), true);
@@ -39,7 +45,7 @@ function foldersToElements()
                <img src='$icon' class='wp-image-82' style='width: 275px; height: auto'/>
             </figure>
             <h3 class='wp-block-heading has-text-align-center'>
-               <a href='$folder' data-type='link' data-id='$folder'>$author<br />$title</a>
+               <a href='$link' data-type='link' data-id='$link'>$author<br />$title</a>
             </h3>
             <p>$description</p>
          </div>
