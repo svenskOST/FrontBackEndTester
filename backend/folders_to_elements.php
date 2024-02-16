@@ -6,17 +6,18 @@ Description: Generates elements on your website to represent folders on the serv
 Author: Alexander Marini
 */
 
-header('Access-Control-Allow-Origin: *'); // not for dist
+header('Access-Control-Allow-Origin: *'); // remove for dist (add for dev)
 
 function folders_to_elements()
 {
-   $baseFolder = 'https://elevsidor.kreativlink.se/app-och-webb';
+   // The base folder to run this plugin on
+   $baseFolder = 'app-och-webb';
    $folders = array_filter(glob($baseFolder . '/*', GLOB_ONLYDIR), 'is_dir');
 
    $elements = "<div class='wp-block-columns alignwide'>";
 
    foreach ($folders as $folder) {
-      $icon = 0;
+      $icon = null;
 
       if (file_exists($folder . '/icon.png')) {
          $icon = $folder . '/icon.png';
@@ -45,7 +46,7 @@ function folders_to_elements()
 
    $elements .= "</div>";
 
-   echo $elements; // Return funkar också på Wordpress?
+   echo $elements; // Return funkar också för WordPress?
 }
 
 folders_to_elements();

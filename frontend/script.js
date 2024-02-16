@@ -3,7 +3,8 @@ const responseContainer = document.getElementById('responseContainer')
 const fetchData = async () => {
    try {
       const response = await fetch(
-         'http://localhost:8080/projects/folders_to_elements/folders_to_elements.php'
+         // Location of the backend entry point
+         'http://localhost:8080/projects/folders-to-elements/folders-to-elements.php'
       )
 
       const content = await response.text()
