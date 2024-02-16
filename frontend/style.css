@@ -4,7 +4,7 @@
 }
 
 body {
-   background-color: rgb(81, 80, 80);
+   background-color: rgb(66, 54, 70);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -13,7 +13,7 @@ body {
 }
 
 #responseContainer {
-   color: rgb(199, 197, 197);
+   color: rgb(229, 224, 224);
    background-color: black;
    padding: 20px;
    border-radius: 20px;
@@ -21,10 +21,10 @@ body {
 }
 
 #urlText {
-   color: rgb(14, 135, 135);
+   color: rgb(16, 181, 181);
 }
 
 #responseText {
-   color: rgb(211, 105, 66);
+   color: rgb(215, 115, 79);
    margin-top: 15px;
 }
