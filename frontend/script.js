@@ -6,9 +6,9 @@ const fetchData = async () => {
          'http://localhost:8080/projects/folders_to_elements/folders_to_elements.php'
       )
 
-      const data = await response.json()
+      const content = await response.text()
 
-      responseContainer.innerHTML = data
+      responseContainer.innerHTML += content
    } catch (error) {
       console.error(error)
    }
